@@ -1,0 +1,31 @@
+from playwright.sync_api import Page
+
+
+class LoginSignupPage:
+    def __init__(self,page):
+        self.page =                         page
+        self.login_form =                   self.page.locator(".login-form")
+        self.login_email =                  self.page.locator('[data-qa="login-password"]')
+        self.login_password =               self.page.get_by_placeholder("Password")
+        self.login_button =                 self.page.locator('[data-qa="login-button"]')
+        self.signup_form =                  self.page.locator(".signup-form")
+        self.signup_name =                  self.page.get_by_placeholder("Name")
+        self.signup_email =                 self.page.locator('[data-qa="signup-email"]')
+        self.signup_button =                self.page.locator('[data-qa="signup-button"]')
+
+    def signup(self,email,username):
+        self.signup_name.fill(username)
+        self.signup_email.fill(email)
+        self.signup_button.click(timeout = 5000)
+
+    def check_signup_form(self):
+        return self.signup_form
+
+    def check_login_form(self):
+        return self.login_form
+
+    def login(self,email,password):
+        self.login_email.fill(email)
+        self.login_password.fill(password)
+        self.login_button.click(timeout = 5000)
+
