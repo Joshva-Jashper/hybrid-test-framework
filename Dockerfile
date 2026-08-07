@@ -1,12 +1,22 @@
-FROM ubuntu:20.04
-RUN apt update && apt upgrade -y
-RUN apt install python3 -y
-RUN apt install python3-pip  git curl pytest -y
-RUN pip install playwright
-RUN playwright install --with-deps
+FROM ununtu:20.04
+ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /app
 
-CMD ["pytest","-v","-s","tests"]
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
+RUN git clone https://github.com/joshvajaspher6-dotcom/hybrid-test-framework.git .
+
+RUN pip3 install --upgrade pip
+RUN pip3 install playwright pytest
+RUN playwright install --with-deps
+
+
+
+CMD ["pytest", "-v", "-s"]
 
