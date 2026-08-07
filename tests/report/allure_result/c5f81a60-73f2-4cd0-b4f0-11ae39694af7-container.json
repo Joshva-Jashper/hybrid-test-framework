@@ -1,1 +1,0 @@
-{"uuid": "0bfae135-a308-4d2a-877c-b5d53f7b00d8", "befores": [{"name": "zipcode", "status": "passed", "start": 1786096700429, "stop": 1786096700429}], "afters": [{"name": "zipcode::<lambda>", "start": 1786096732732}], "start": 1786096700429, "stop": 1786096732732}
