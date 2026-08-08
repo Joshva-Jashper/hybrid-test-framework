@@ -1,0 +1,22 @@
+[
+  {
+    "email": "jane.doe.qa01@xample.com",
+    "password": "SecurePass@123",
+    "success_or_failure" : "success"
+  },
+  {
+    "email": "john.smith.q02@example.com",
+    "password": "AnotherPass@456",
+    "success_or_failure" : "success"
+  },
+  {
+    "email": "alex.kumar.qa3@example.com",
+    "password": "WeakPa@789",
+    "success_or_failure" : "failure"
+  },
+  {
+    "email": "priya.raman.qa0@example.com",
+    "password": "TestPa@321",
+    "success_or_failure" : "failure"
+  }
+]
