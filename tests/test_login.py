@@ -18,6 +18,19 @@ def test_login_with_credentials(page,email,password,success_or_failure):
     else:
         expect(login_page.not_success_full_login()).to_be_visible(timeout=3000)
 
+@pytest.mark.ui
+def test_login_logout(page):
+    base_page = BasePage(page)
+    login_page = LoginSignupPage(page)
+    base_page.click_signup_login()
+    login_page.login("jane.doe.qa01@xample.com","SecurePass@123")
+    expect(login_page.success_full_login()).to_be_visible(timeout=3000)
+    login_page.click_logout_button()
+    expect(login_page.check_login_form()).to_be_visible(timeout=3000)
+
+
+
+
 
 
 

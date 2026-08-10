@@ -15,6 +15,8 @@ class LoginSignupPage:
         self.user_exists =                  self.page.locator('p:has-text("Email Address already exist!")')
         self.logged_in =                    self.page.locator('[class="fa fa-user"]')
         self.login_error =                  self.page.locator('p:has-text("Your email or password is incorrect!")')
+        self.logout_button =                self.page.locator('[href="/logout"]')
+
 
     def signup(self,email,username):
         self.signup_name.fill(username)
@@ -40,4 +42,7 @@ class LoginSignupPage:
 
     def not_success_full_login(self):
         return self.login_error
+
+    def click_logout_button(self):
+        self.logout_button.click(timeout = 3000)
 

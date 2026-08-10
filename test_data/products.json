@@ -1,0 +1,26 @@
+[
+  {
+    "search_term": "Dress",
+    "expected_present": "yes"
+  },
+  {
+    "search_term": "Top",
+    "expected_present": "yes"
+  },
+  {
+    "search_term": "Jeans",
+    "expected_present": "yes"
+  },
+  {
+    "search_term": "Tshirt",
+    "expected_present": "yes"
+  },
+  {
+    "search_term": "xyzNoSuchProduct123",
+    "expected_present": "no"
+  },
+  {
+    "search_term": "zzzNotAProductAtAll",
+    "expected_present": "no"
+  }
+]
