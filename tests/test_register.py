@@ -9,6 +9,7 @@ from utils.read_file import dict_read
 
 
 @pytest.mark.ui
+@pytest.mark.smoke
 @pytest.mark.parametrize("email,username,status,firstname,lastname,password,day,month,year,company,address,country,state,zipcode,city,mobile_number",
                          dict_read("./test_data/signup.json"))
 def test_register(page,email,username,status,firstname,lastname,password,day,month,year,company,address,country,state,zipcode,city,mobile_number):
@@ -24,6 +25,7 @@ def test_register(page,email,username,status,firstname,lastname,password,day,mon
 
 
 
+
 @pytest.mark.ui
 def test_already_registered_user(page):
     base_page = BasePage(page)
@@ -32,7 +34,14 @@ def test_already_registered_user(page):
     base_page.click_signup_login()
     expect(login_signup.check_signup_form()).to_be_visible(timeout=3000)
     login_signup.signup("alex.kumar.qa3@example.com", "alexkumarqa03")
+
     expect(login_signup.check_user_exists()).to_be_visible(timeout=3000)
+
+
+
+
+
+
 
 
 

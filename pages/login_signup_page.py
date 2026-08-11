@@ -16,6 +16,8 @@ class LoginSignupPage:
         self.logged_in =                    self.page.locator('[class="fa fa-user"]')
         self.login_error =                  self.page.locator('p:has-text("Your email or password is incorrect!")')
         self.logout_button =                self.page.locator('[href="/logout"]')
+        self.delete_account =               self.page.locator('[href="/delete_account"]')
+        self.account_deleted =              self.page.locator('[class="title text-center"] b')
 
 
     def signup(self,email,username):
@@ -45,4 +47,10 @@ class LoginSignupPage:
 
     def click_logout_button(self):
         self.logout_button.click(timeout = 3000)
+
+    def click_delete_account(self):
+        self.delete_account.click(timeout = 3000)
+
+    def account_deleted_msg(self):
+        return self.account_deleted
 
