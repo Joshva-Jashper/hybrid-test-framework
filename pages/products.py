@@ -19,7 +19,7 @@ class ProductsPage:
 
 
     def add_to_cart_button(self):
-        return self.add_to_cart.first
+        return self.add_to_cart.all()
 
     def product_added(self):
         return self.product_added_successfully.first

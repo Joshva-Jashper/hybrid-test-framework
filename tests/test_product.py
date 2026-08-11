@@ -38,8 +38,9 @@ def test_add_product_to_cart(page,product_name):
     base_page.click_product()
     count = product_page.product_search_fill(product_name)
     first_product = product_page.add_to_cart_button()
-    first_product.click(force=True,timeout=3000)
-    expect(product_page.product_added()).to_be_visible(timeout=3000)
+    for el in first_product:
+        el.click(force=True,timeout=3000)
+        expect(product_page.product_added()).to_be_visible(timeout=3000)
     assert count >= 0
     product_page.click_continue_shopping()
 
