@@ -8,6 +8,8 @@ class ProductsPage:
         self.add_to_cart =                          self.page.get_by_text("Add to cart").first
         self.product_added_successfully =           self.page.locator('[class="text-center"]')
         self.continue_button =                      self.page.get_by_role("button", name="Continue Shopping")
+        self.category_locator =                             self.page.locator('[data-parent="#accordian"]')
+
 
     def product_search_fill(self,product_name):
         self.product_search.fill(product_name)
@@ -28,6 +30,9 @@ class ProductsPage:
 
     def click_continue_shopping(self):
         self.continue_button.click()
+
+    def category(self):
+        return self.category_locator.all()
 
 
 

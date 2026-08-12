@@ -84,7 +84,7 @@ def page(browser_context,request):
         browser_context.tracing.start(screenshots = True,snapshots = True)
 
     page = browser_context.new_page()
-    page.goto(base_url)
+    page.goto(base_url,timeout=60000)
     yield page
 
     test_name = request.node.name

@@ -49,6 +49,31 @@ def test_add_product_to_cart(page,product_name):
     assert count >= 0
 
 
+@pytest.mark.ui
+@pytest.mark.parametrize("category_name, sub_category_name",dict_read("./test_data/category.json"))
+def test_category(page,category_name,sub_category_name):
+    product_page = ProductsPage(page)
+    category = product_page.category()
+
+    true_element = None
+    for element in category:
+        element_name = element.inner_text().strip()
+        if element_name.lower() == category_name.lower():
+            element.click(timeout=3000)
+            true_element = element
+            break
+    if true_element is not None:
+        sub_category = page.locator(f"#{category_name} a").filter(has_text=sub_category_name).first
+        sub_category.wait_for(state="visible")
+        sub_category.click(timeout=5000)
+        expect(product_page.product_list_exists()).to_be_visible(timeout=3000)
+
+
+
+
+
+
+
 
 
 
