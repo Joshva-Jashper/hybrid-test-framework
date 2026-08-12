@@ -3,7 +3,7 @@ from utils.read_file import dict_read
 from pages.products import ProductsPage
 from pages.base_page import BasePage
 import pytest
-
+from faker import Faker
 
 
 @pytest.mark.ui
@@ -67,6 +67,17 @@ def test_category(page,category_name,sub_category_name):
         sub_category.wait_for(state="visible")
         sub_category.click(timeout=5000)
         expect(product_page.product_list_exists()).to_be_visible(timeout=3000)
+
+
+@pytest.mark.ui
+def test_product_review(page):
+    base_page = BasePage(page)
+    base_page.click_product()
+    product_page = ProductsPage(page)
+    product_page.click_view_product()
+    faker = Faker()
+    product_page.add_review(faker.user_name(),faker.email(),faker.text())
+    expect(product_page.review_success_msg()).to_contain_text("Thank you for your review.")
 
 
 

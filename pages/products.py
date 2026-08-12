@@ -8,7 +8,13 @@ class ProductsPage:
         self.add_to_cart =                          self.page.get_by_text("Add to cart").first
         self.product_added_successfully =           self.page.locator('[class="text-center"]')
         self.continue_button =                      self.page.get_by_role("button", name="Continue Shopping")
-        self.category_locator =                             self.page.locator('[data-parent="#accordian"]')
+        self.category_locator =                     self.page.locator('[data-parent="#accordian"]')
+        self.view_product =                         self.page.locator('[class="nav nav-pills nav-justified"] a').first
+        self.review_username =                      self.page.get_by_placeholder("Your Name")
+        self.review_email =                         self.page.locator("#email")
+        self.review =                               self.page.get_by_placeholder("Add Review Here!")
+        self.review_submit_button =                 self.page.locator("#button-review")
+        self.review_added_successfully =            self.page.locator('#review-section')
 
 
     def product_search_fill(self,product_name):
@@ -34,8 +40,17 @@ class ProductsPage:
     def category(self):
         return self.category_locator.all()
 
+    def click_view_product(self):
+        self.view_product.click()
+
+    def add_review(self,username,email,review):
+        self.review_username.fill(username)
+        self.review_email.fill(email)
+        self.review.fill(review)
+        self.review_submit_button.click(timeout = 3000)
 
 
-
+    def review_success_msg(self):
+        return self.review_added_successfully
 
 
