@@ -37,12 +37,16 @@ def test_add_product_to_cart(page,product_name):
     product_page = ProductsPage(page)
     base_page.click_product()
     count = product_page.product_search_fill(product_name)
-    first_product = product_page.add_to_cart_button()
-    for el in first_product:
-        el.click(force=True,timeout=3000)
-        expect(product_page.product_added()).to_be_visible(timeout=3000)
-    assert count >= 0
+    product = product_page.add_to_cart_button()
+
+    product.wait_for(state="visible")
+    product.scroll_into_view_if_needed()
+    product.hover(force=True)
+    product.click(force=True,timeout=3000)
+    expect(product_page.product_added()).to_be_visible(timeout=3000)
     product_page.click_continue_shopping()
+
+    assert count >= 0
 
 
 
