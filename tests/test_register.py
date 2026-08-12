@@ -19,7 +19,7 @@ def test_register(page):
     expect(login_signup.check_signup_form()).to_be_visible(timeout=3000)
     login_signup.signup(faker.email(), faker.user_name())
     expect(signup.signup_form_check()).to_be_visible(timeout=3000)
-    signup.signup(faker.password(), faker.first_name(), faker.last_name(), faker.password(), faker.date_of_birth(), faker.month(), faker.year(), faker.company(), faker.address(), faker.country(), faker.state(), faker.zipcode(), faker.city(), faker.phone_number())
+    signup.signup("married",faker.first_name(), faker.last_name(), faker.password(),"1", "12", "2005", faker.company(), faker.address(),"India", faker.state(), faker.zipcode(), faker.city(), str(faker.phone_number()))
     expect(signup.signup_done()).to_be_visible(timeout=3000)
 
 
