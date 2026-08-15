@@ -62,7 +62,7 @@ def pytest_runtest_makereport(item):
 def browser_context(request,playwright:Playwright,get_storage_state):
     browser_name = get_option(request.config,"browser")
     video_option = get_option(request.config,"video")
-    headed_flag = get_option(request.config,"headed")
+    #headed_flag = get_option(request.config,"headed")
 
 
     print("[*] Playwright is started....")
@@ -70,11 +70,11 @@ def browser_context(request,playwright:Playwright,get_storage_state):
     print(f"[*] starting with video mode ...{video_option}")
     #print(f"[*] headed flagg is set to {headed_flag}")
     if browser_name == "chromium":
-        browser = playwright.chromium.launch(headless = not headed_flag)
+        browser = playwright.chromium.launch()
     elif browser_name == "firefox":
-        browser = playwright.firefox.launch(headless= not headed_flag)
+        browser = playwright.firefox.launch()
     elif browser_name == "webkit":
-        browser = playwright.webkit.launch(headless= not headed_flag)
+        browser = playwright.webkit.launch()
     else:
         raise Exception("[*] Browser type not supported")
 
