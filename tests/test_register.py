@@ -16,12 +16,12 @@ def test_register(page):
     signup = Signup(page)
     faker = Faker()
     base_page.click_signup_login()
-    expect(login_signup.check_signup_form()).to_be_visible(timeout=3000)
+    expect(login_signup.check_signup_form()).to_be_visible()
     login_signup.signup(faker.email(), faker.user_name())
-    expect(signup.signup_form_check()).to_be_visible(timeout=3000)
+    expect(signup.signup_form_check()).to_be_visible()
     signup.signup("married",faker.first_name(), faker.last_name(), faker.password(),"1", "12", "2005", faker.company(),
                                                     faker.address(),"India", faker.state(), faker.zipcode(), faker.city(), str(faker.phone_number()))
-    expect(signup.signup_done()).to_be_visible(timeout=3000)
+    expect(signup.signup_done()).to_be_visible()
 
 
 
@@ -32,9 +32,9 @@ def test_already_registered_user(page):
     login_signup = LoginSignupPage(page)
     signup = Signup(page)
     base_page.click_signup_login()
-    expect(login_signup.check_signup_form()).to_be_visible(timeout=3000)
+    expect(login_signup.check_signup_form()).to_be_visible()
     login_signup.signup("alex.kumar.qa3@example.com", "alexkumarqa03")
-    expect(login_signup.check_user_exists()).to_be_visible(timeout=3000)
+    expect(login_signup.check_user_exists()).to_be_visible()
 
 
 

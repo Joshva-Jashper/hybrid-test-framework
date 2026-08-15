@@ -47,7 +47,7 @@ class ProductsPage:
         self.review_username.fill(username)
         self.review_email.fill(email)
         self.review.fill(review)
-        self.review_submit_button.click(timeout = 3000)
+        self.review_submit_button.click()
 
 
     def review_success_msg(self):

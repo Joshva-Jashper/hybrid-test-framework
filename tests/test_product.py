@@ -23,7 +23,7 @@ def test_product_list_exists(page):
     base_page = BasePage(page)
     base_page.click_product()
     product_page = ProductsPage(page)
-    expect(product_page.product_list_exists()).to_be_visible(timeout=3000)
+    expect(product_page.product_list_exists()).to_be_visible()
 
 
 
@@ -38,12 +38,11 @@ def test_add_product_to_cart(page,product_name):
     base_page.click_product()
     count = product_page.product_search_fill(product_name)
     product = product_page.add_to_cart_button()
-
     product.wait_for(state="visible")
     product.scroll_into_view_if_needed()
     product.hover(force=True)
-    product.click(force=True,timeout=3000)
-    expect(product_page.product_added()).to_be_visible(timeout=3000)
+    product.click(force=True)
+    expect(product_page.product_added()).to_be_visible()
     product_page.click_continue_shopping()
 
     assert count >= 0
@@ -54,19 +53,18 @@ def test_add_product_to_cart(page,product_name):
 def test_category(page,category_name,sub_category_name):
     product_page = ProductsPage(page)
     category = product_page.category()
-
     true_element = None
     for element in category:
         element_name = element.inner_text().strip()
         if element_name.lower() == category_name.lower():
-            element.click(timeout=3000)
+            element.click()
             true_element = element
             break
     if true_element is not None:
         sub_category = page.locator(f"#{category_name} a").filter(has_text=sub_category_name).first
         sub_category.wait_for(state="visible")
-        sub_category.click(timeout=5000)
-        expect(product_page.product_list_exists()).to_be_visible(timeout=3000)
+        sub_category.click()
+        expect(product_page.product_list_exists()).to_be_visible()
 
 
 @pytest.mark.ui
@@ -78,7 +76,6 @@ def test_product_review(page):
     faker = Faker()
     product_page.add_review(faker.user_name(),faker.email(),faker.text())
     expect(product_page.review_success_msg()).to_contain_text("Thank you for your review.")
-
 
 
 

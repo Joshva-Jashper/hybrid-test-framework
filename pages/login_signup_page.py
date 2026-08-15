@@ -23,7 +23,7 @@ class LoginSignupPage:
     def signup(self,email,username):
         self.signup_name.fill(username)
         self.signup_email.fill(email)
-        self.signup_button.click(timeout = 5000)
+        self.signup_button.click()
 
     def check_signup_form(self):
         return self.signup_form
@@ -34,7 +34,7 @@ class LoginSignupPage:
     def login(self,email,password):
         self.login_email.fill(email)
         self.login_password.fill(password)
-        self.login_button.click(timeout = 5000)
+        self.login_button.click()
 
     def check_user_exists(self):
         return self.user_exists
@@ -46,10 +46,10 @@ class LoginSignupPage:
         return self.login_error
 
     def click_logout_button(self):
-        self.logout_button.click(timeout = 3000)
+        self.logout_button.click()
 
     def click_delete_account(self):
-        self.delete_account.click(timeout = 3000)
+        self.delete_account.click()
 
     def account_deleted_msg(self):
         return self.account_deleted

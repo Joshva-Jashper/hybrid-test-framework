@@ -2,6 +2,9 @@ from playwright.sync_api import Playwright, sync_playwright
 import pytest
 from pathlib import Path
 import allure
+from pages.base_page import BasePage
+from pages.signup import Signup
+from pages.login_signup_page import LoginSignupPage
 
 #
 # def pytest_addoption(parser):
@@ -23,10 +26,6 @@ def get_option(config,cmd_option):
         return True if value == "true" else False
     else:
         return config.getini(cmd_option)
-
-
-
-
 
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
@@ -84,7 +83,7 @@ def page(browser_context,request):
         browser_context.tracing.start(screenshots = True,snapshots = True)
 
     page = browser_context.new_page()
-    page.goto(base_url,timeout=60000)
+    page.goto(base_url,wait_until="domcontentloaded",timeout=60000)
     yield page
 
     test_name = request.node.name
@@ -113,6 +112,9 @@ def page(browser_context,request):
                 name = f"{test_name}_video",
                 attachment_type=allure.attachment_type.MP4,
             )
+
+
+
 
 
 

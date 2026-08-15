@@ -52,7 +52,7 @@ class Signup:
         self.zipcode.fill(zipcode)
         self.city.fill(city)
         self.mobile_number.fill(mobile_number)
-        self.create_account.click(timeout = 5000)
+        self.create_account.click()
 
     def signup_done(self):
         return self.account_created
