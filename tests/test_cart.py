@@ -29,6 +29,7 @@ def test_product_cart_with_one_product(page):
 
     base_page.click_cart()
     products = cart_page.get_products_cart()
+    page.wait_for_load_state("networkidle", timeout=10000)
     assert len(products) == 1
     remove_product = cart_page.get_remove_product()
     for el in remove_product:

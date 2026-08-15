@@ -8,6 +8,7 @@ import pytest
 @pytest.mark.ui
 @pytest.mark.smoke
 @pytest.mark.parametrize("email,password,success_or_failure",dict_read("./test_data/login.json"))
+@pytest.mark.no_auth
 def test_login_with_credentials(page,email,password,success_or_failure):
     base_page = BasePage(page)
     login_page = LoginSignupPage(page)
@@ -19,6 +20,7 @@ def test_login_with_credentials(page,email,password,success_or_failure):
         expect(login_page.not_success_full_login()).to_be_visible()
 
 @pytest.mark.ui
+@pytest.mark.no_auth
 def test_login_logout(page):
     base_page = BasePage(page)
     login_page = LoginSignupPage(page)
@@ -30,6 +32,7 @@ def test_login_logout(page):
 
 
 @pytest.mark.ui
+@pytest.mark.no_auth
 def test_delete_user(page):
     base_page = BasePage(page)
     login_page = LoginSignupPage(page)

@@ -78,12 +78,15 @@ def browser_context(request,playwright:Playwright,get_storage_state):
     else:
         raise Exception("[*] Browser type not supported")
 
-    if video_option in ["on","retain-on-failure"]:
-        print("[*] video started based on requirements.....")
-        context = browser.new_context(record_video_dir = "report/videos",storage_state = get_storage_state)
+    if "no_auth" in request.node.keywords:
+        context = browser.new_context()
     else:
-        print("[*] video not started based on requirements......")
-        context = browser.new_context(storage_state=get_storage_state)
+        if video_option in ["on","retain-on-failure"]:
+            print("[*] video started based on requirements.....")
+            context = browser.new_context(record_video_dir = "report/videos",storage_state = get_storage_state)
+        else:
+            print("[*] video not started based on requirements......")
+            context = browser.new_context(storage_state=get_storage_state)
 
     yield context
 
