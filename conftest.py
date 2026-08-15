@@ -1,4 +1,4 @@
-from playwright.sync_api import Playwright, sync_playwright
+from playwright.sync_api import Playwright, expect
 import pytest
 from pathlib import Path
 import allure
@@ -27,6 +27,30 @@ def get_option(config,cmd_option):
     else:
         return config.getini(cmd_option)
 
+
+@pytest.fixture(scope = "session")
+def get_storage_state(request,playwright:Playwright):
+    browser = playwright.chromium.launch()
+    browser_context = browser.new_context()
+    page = browser_context.new_page()
+    base_url = get_option(request.config,"base_url")
+    page.goto(base_url,wait_until="domcontentloaded",timeout=60000)
+
+    base_page = BasePage(page)
+    login_page = LoginSignupPage(page)
+    base_page.click_signup_login()
+    login_page.login("jane.doe.qa01@xample.com", "SecurePass@123")
+    expect(login_page.success_full_login()).to_be_visible()
+
+    token_path = "auth/token.json"
+    browser_context.storage_state(path = token_path)
+    yield token_path
+    browser_context.close()
+    browser.close()
+
+
+
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
     outcome = yield
@@ -35,7 +59,7 @@ def pytest_runtest_makereport(item):
     setattr(item, f"report_{report.when}", report)
 
 @pytest.fixture(scope = "function")
-def browser_context(request,playwright:Playwright):
+def browser_context(request,playwright:Playwright,get_storage_state):
     browser_name = get_option(request.config,"browser")
     video_option = get_option(request.config,"video")
     headed_flag = get_option(request.config,"headed")
@@ -56,10 +80,10 @@ def browser_context(request,playwright:Playwright):
 
     if video_option in ["on","retain-on-failure"]:
         print("[*] video started based on requirements.....")
-        context = browser.new_context(record_video_dir = "report/videos")
+        context = browser.new_context(record_video_dir = "report/videos",storage_state = get_storage_state)
     else:
         print("[*] video not started based on requirements......")
-        context = browser.new_context()
+        context = browser.new_context(storage_state=get_storage_state)
 
     yield context
 
