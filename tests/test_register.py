@@ -10,6 +10,7 @@ from utils.read_file import dict_read
 
 @pytest.mark.ui
 @pytest.mark.smoke
+@pytest.mark.no_auth
 def test_register(page):
     base_page = BasePage(page)
     login_signup = LoginSignupPage(page)
@@ -25,7 +26,7 @@ def test_register(page):
 
 
 
-
+@pytest.mark.no_auth
 @pytest.mark.ui
 def test_already_registered_user(page):
     base_page = BasePage(page)
