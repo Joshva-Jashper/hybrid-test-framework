@@ -38,7 +38,7 @@ jobs:
       # 5. Run Pytest Suite
       - name: Run Pytest Suite
         run: |
-          pytest --headless
+          pytest 
 
       # 6. Upload Allure or Playwright HTML Reports/Artifacts on Failure
       - name: Upload Test Artifacts (Screenshots & Traces)
