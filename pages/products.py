@@ -17,6 +17,7 @@ class ProductsPage:
         self.review_added_successfully =            self.page.locator('#review-section')
 
 
+
     def product_search_fill(self,product_name):
         self.product_search.fill(product_name)
         self.product_search_click.click()
@@ -52,5 +53,6 @@ class ProductsPage:
 
     def review_success_msg(self):
         return self.review_added_successfully
+
 
 

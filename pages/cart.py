@@ -16,4 +16,5 @@ class Cart:
     def get_remove_product(self):
         return self.remove_product_cart.all()
 
-
+    def get_remove_product_locator(self):
+        return self.remove_product_cart
