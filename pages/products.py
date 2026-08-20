@@ -5,7 +5,7 @@ class ProductsPage:
         self.product_list =                         self.page.locator('[class="title text-center"]')
         self.individual_product =                   self.page.locator('[class="col-sm-4"]')
         self.product_search_click =                 self.page.locator("#submit_search")
-        self.add_to_cart =                          self.page.get_by_text("Add to cart").first
+        self.add_to_cart =                          self.page.get_by_text("Add to cart")
         self.product_added_successfully =           self.page.locator('[class="text-center"]')
         self.continue_button =                      self.page.get_by_role("button", name="Continue Shopping")
         self.category_locator =                     self.page.locator('[data-parent="#accordian"]')
@@ -27,7 +27,7 @@ class ProductsPage:
 
 
     def add_to_cart_button(self):
-        return self.add_to_cart
+        return self.add_to_cart.first
 
     def product_added(self):
         return self.product_added_successfully.first

@@ -49,3 +49,14 @@ class Cart:
         checkout_price = self.checkout_price.last.inner_text()
         return int(checkout_price.replace("Rs."," ").strip())    
 
+    def get_product_total_price(self,product):
+        product_total_price = product.locator('[class="cart_total"]').inner_text()
+        total_price = int(product_total_price.replace("Rs."," ").strip())
+        return total_price
+
+
+
+    
+
+
+
