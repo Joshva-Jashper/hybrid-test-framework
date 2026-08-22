@@ -8,6 +8,14 @@ class Cart:
         self.remove_product_cart =          self.page.locator('[class="cart_quantity_delete"]')
         self.checkout =                     self.page.get_by_text("Proceed To Checkout")
         self.checkout_price =               self.page.locator('[class="cart_total_price"]')
+        self.deleivery_details_title =      self.page.locator('#address_delivery li:nth-child(1)')
+        self.delivery_details_name =        self.page.locator('#address_delivery li:nth-child(2)')
+        self.billing_address_title =        self.page.locator('#address_invoice li:nth-child(1)')
+        self.billing_address_name =         self.page.locator('#address_invoice li:nth-child(2)')
+        self.comment_box =                  self.page.locator('[class="form-control"]')
+        self.place_order =                  self.page.get_by_text("Place Order")
+
+        
 
     def click_check_out_button(self):
         self.check_out_button.click()
@@ -53,6 +61,25 @@ class Cart:
         product_total_price = product.locator('[class="cart_total"]').inner_text()
         total_price = int(product_total_price.replace("Rs."," ").strip())
         return total_price
+
+    def get_delivery_address_title(self):
+        return self.deleivery_details_title
+
+    def get_delivery_name(self):
+        return self.delivery_details_name
+
+    def get_billing_title(self):
+        return self.billing_address_title
+
+    def get_billing_name(self):
+        return self.billing_address_name
+
+    def get_comment_box(self,message):
+        self.comment_box.fill(message)
+
+    def click_palce_order(self):
+        self.place_order.click()    
+        
 
 
 
