@@ -24,10 +24,8 @@ class ContactUs:
         self.Contact_Email.fill(email)
         self.Contact_Subject.fill(subject)
         self.Contact_comment.fill(comment)
-        self.Contact_file.set_input_files(file_path)
-
         self.page.once("dialog", lambda dialog: dialog.accept())
-        self.submit_button.click(force=True)   
+        self.submit_button.dblclick(force=True)   
         self.page.wait_for_load_state("networkidle")
 
     def get_conformation_msg(self):
