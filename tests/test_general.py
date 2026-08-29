@@ -39,7 +39,6 @@ def test_guest_checkout_attempt(page):
 
 
 
-
         
 
 
