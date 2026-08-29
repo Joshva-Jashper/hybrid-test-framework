@@ -14,6 +14,9 @@ class Cart:
         self.billing_address_name =         self.page.locator('#address_invoice li:nth-child(2)')
         self.comment_box =                  self.page.locator('[class="form-control"]')
         self.place_order =                  self.page.get_by_text("Place Order")
+        self.checkout_without_login =       self.page.get_by_text("Register / Login account to proceed on checkout.")
+        self.continue_to_cart =             self.page.get_by_role("button",name ="Continue On Cart",exact = True)
+
 
         
 
@@ -79,6 +82,13 @@ class Cart:
 
     def click_palce_order(self):
         self.place_order.click()    
+
+    def get_checkout_without_login_msg(self):
+        return self.checkout_without_login    
+
+    def click_continue_to_cart_btn(self):
+        self.continue_to_cart.click()
+        
         
 
 
