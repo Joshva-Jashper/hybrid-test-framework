@@ -1,6 +1,6 @@
 from playwright.sync_api import expect
-from pages.base_page import BasePage
-from pages.contact import ContactUs
+from pages.ui.base_page import BasePage
+from pages.ui.contact import ContactUs
 import pytest
 from faker import Faker
 
