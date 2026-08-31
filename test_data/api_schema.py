@@ -47,3 +47,8 @@ product_scheme={
     "category"
   ]
 }
+
+brand_scheme = {
+  "id": 1,
+  "brand": "Polo"
+}
