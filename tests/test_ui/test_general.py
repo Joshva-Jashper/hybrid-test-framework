@@ -1,7 +1,7 @@
 from playwright.sync_api import expect
-from pages.base_page import BasePage
-from pages.cart import Cart
-from pages.products import ProductsPage
+from pages.ui.base_page import BasePage
+from pages.ui.cart import Cart
+from pages.ui.products import ProductsPage
 import pytest
 
 

@@ -1,7 +1,7 @@
 from playwright.sync_api import expect
 from utils.read_file import dict_read
-from pages.products import ProductsPage
-from pages.base_page import BasePage
+from pages.ui.products import ProductsPage
+from pages.ui.base_page import BasePage
 import pytest
 from faker import Faker
 

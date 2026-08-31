@@ -1,9 +1,9 @@
 from playwright.sync_api import expect
 from faker import Faker
 
-from pages.base_page  import BasePage
-from pages.login_signup_page import LoginSignupPage
-from pages.signup import Signup
+from pages.ui.base_page  import BasePage
+from pages.ui.login_signup_page import LoginSignupPage
+from pages.ui.signup import Signup
 import pytest
 from utils.read_file import dict_read
 

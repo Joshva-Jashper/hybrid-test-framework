@@ -2,9 +2,9 @@ from playwright.sync_api import Playwright, expect
 import pytest
 from pathlib import Path
 import allure
-from pages.base_page import BasePage
-from pages.signup import Signup
-from pages.login_signup_page import LoginSignupPage
+from base_page import BasePage
+from signup import Signup
+from login_signup_page import LoginSignupPage
 
 #
 # def pytest_addoption(parser):

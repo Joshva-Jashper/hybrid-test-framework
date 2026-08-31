@@ -1,7 +1,7 @@
 from playwright.sync_api import expect
-from pages.base_page import BasePage
-from pages.signup import Signup
-from pages.login_signup_page import LoginSignupPage
+from pages.ui.base_page import BasePage
+from pages.ui.signup import Signup
+from pages.ui.login_signup_page import LoginSignupPage
 from utils.read_file import dict_read
 import pytest
 

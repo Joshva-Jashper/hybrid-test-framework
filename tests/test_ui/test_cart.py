@@ -1,10 +1,10 @@
 from playwright.sync_api import expect
 import pytest
-from pages.base_page import BasePage
-from pages.products import ProductsPage
-from pages.login_signup_page import LoginSignupPage
-from pages.cart import Cart
-from pages.payment import Payment
+from pages.ui.base_page import BasePage
+from pages.ui.products import ProductsPage
+from pages.ui.login_signup_page import LoginSignupPage
+from pages.ui.cart import Cart
+from pages.ui.payment import Payment
 from faker import Faker
 
 @pytest.mark.ui
