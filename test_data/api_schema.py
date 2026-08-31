@@ -1,3 +1,8 @@
+
+from faker import Faker
+
+
+
 product_scheme={
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Generated schema for Root",
@@ -51,4 +56,70 @@ product_scheme={
 brand_scheme = {
   "id": 1,
   "brand": "Polo"
+}
+
+faker = Faker()
+
+
+user_body={
+    "name": "Joshva",
+    "email": faker.email(),
+    "password": "securepassword123",
+    "title": "Mr",
+    "birth_date": "15",
+    "birth_month": "August",
+    "birth_year": "2004",
+    "firstname": "Joshva",
+    "lastname": "Jaspher",
+    "company": "TechCorp",
+    "address1": "123 Street Name",
+    "address2": "Apt 4B",
+    "country": "India",
+    "zipcode": "600001",
+    "state": "Tamil Nadu",
+    "city": "Chennai",
+    "mobile_number": "9876543210"
+}
+
+user_body_dup_email={
+    "name": "Joshva",
+    "email": "joshva@gmail.com",
+    "password": "securepassword123",
+    "title": "Mr",
+    "birth_date": "15",
+    "birth_month": "August",
+    "birth_year": "2004",
+    "firstname": "Joshva",
+    "lastname": "Jaspher",
+    "company": "TechCorp",
+    "address1": "123 Street Name",
+    "address2": "Apt 4B",
+    "country": "India",
+    "zipcode": "600001",
+    "state": "Tamil Nadu",
+    "city": "Chennai",
+    "mobile_number": "9876543210"
+}
+username = faker.user_name()
+email = "joshva@gmail.com"
+
+
+user_body_update={
+    "name": username,
+    "email": email,
+    "password": "securepassword123",
+    "title": "Mr",
+    "birth_date": "15",
+    "birth_month": "August",
+    "birth_year": "2004",
+    "firstname": "Joshva",
+    "lastname": "Jaspher",
+    "company": "TechCorp",
+    "address1": "123 Street Name",
+    "address2": "Apt 4B",
+    "country": "India",
+    "zipcode": "600001",
+    "state": "Tamil Nadu",
+    "city": "Chennai",
+    "mobile_number": "931234123"
 }
