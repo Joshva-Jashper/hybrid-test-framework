@@ -1,6 +1,6 @@
 from playwright.sync_api import expect
 from pages.api.user_client import UserClient
-from test_data.api_schema import user_body,user_body_dup_email
+from test_data.api_schema import user_body,user_body_dup_email,user_body_delete
 import pytest
 
 @pytest.mark.api
@@ -25,6 +25,28 @@ def test_create_user_with_duplicate_email(api_client):
     assert response.status_text == "OK"
     assert response_data["responseCode"] == 400
     assert "Email already exists!" in response_data["message"]
+
+
+@pytest.mark.api 
+def test_delete_user(api_client):
+    user_client = UserClient(api_client)
+    response = user_client.create_user(user_body_delete)
+    expect(response).to_be_ok()
+    response_data = response.json()
+    assert response.status == 200
+    assert response.status_text == "OK"
+    assert response_data["responseCode"] == 201
+    assert "User created!" in response_data["message"]
+    delete_email = user_body_delete["email"]
+    delete_password = user_body_delete["password"]
+    delete_response = user_client.delete_user(delete_email,delete_password)
+    expect(delete_response).to_be_ok()
+    delete_response.status == 200
+    delete_response.status_text == "OK"
+    delete_response_data = delete_response.json()
+    assert delete_response_data["responseCode"] == 200
+    assert "Account deleted!" in delete_response_data["message"]
+    
 
 
 

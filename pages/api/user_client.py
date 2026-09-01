@@ -7,5 +7,9 @@ class UserClient:
 
     def get_user_by_email(self,email):
         return self.api_client.get("/api/getUserDetailByEmail",params = {"email" : email})
+
+    def delete_user(self,email,password):
+        return self.api_client.delete("/api/deleteAccount",form = {"email" :email,"password": password})
+    
     
 
