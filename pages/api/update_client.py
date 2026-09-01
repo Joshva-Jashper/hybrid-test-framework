@@ -3,5 +3,5 @@ class UpdateClient:
         self.api_client =api_client
 
     def update_user(self,data):
-        return self.api_client.put("/api/updateAccount",data=data) 
+        return self.api_client.put("/api/updateAccount",multipart=data) 
        

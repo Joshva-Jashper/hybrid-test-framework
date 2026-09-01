@@ -60,11 +60,11 @@ brand_scheme = {
 
 faker = Faker()
 
-
+body_email = faker.email()
 user_body={
     "name": "Joshva",
-    "email": faker.email(),
-    "password": "securepassword123",
+    "email": body_email,
+    "password": faker.password(),
     "title": "Mr",
     "birth_date": "15",
     "birth_month": "August",
@@ -84,7 +84,7 @@ user_body={
 user_body_dup_email={
     "name": "Joshva",
     "email": "joshva@gmail.com",
-    "password": "securepassword123",
+    "password": "1",
     "title": "Mr",
     "birth_date": "15",
     "birth_month": "August",
@@ -100,14 +100,13 @@ user_body_dup_email={
     "city": "Chennai",
     "mobile_number": "9876543210"
 }
-username = faker.user_name()
-email = "joshva@gmail.com"
 
 
+user_name = faker.user_name()
 
 user_body_update={
-    "name": username,
-    "email": email,
+    "name": user_name,
+    "email": "traceywillis@example.com",
     "password": "securepassword123",
     "title": "Mr",
     "birth_date": "15",
