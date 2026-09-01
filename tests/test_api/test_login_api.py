@@ -1,6 +1,7 @@
 from playwright.sync_api import expect
 from pages.api.user_login import UserLogin
 from pages.api.user_client import UserClient
+from faker import Faker
 from test_data.api_schema import user_body
 import pytest
 
@@ -9,6 +10,8 @@ import pytest
 def test_user_login_with_valid_credential(api_client):
     user_client = UserLogin(api_client)
     user = UserClient(api_client)
+    faker = Faker()
+    user_body["email"] = faker.email()
     response = user.create_user(user_body)
     expect(response).to_be_ok()
     response_data = response.json()
