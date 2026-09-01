@@ -5,6 +5,10 @@ class ProductClient:
         
     def get_all_products(self):
         return self.api_client.get("/api/productsList")
+    
+    def get_all_product_with_invalid_method(self):
+        return self.api_client.post("/api/productsList")
+
 
     def search_product(self,data):
         return self.api_client.post("/api/searchProduct",data=data)

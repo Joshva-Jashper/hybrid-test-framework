@@ -80,5 +80,17 @@ def test_get_product_without_search_parameter(api_client):
     assert "Bad request" in response_data["message"]
 
 
+@pytest.mark.api
+def test_get_products_with_invalid_method(api_client):
+    user_client = ProductClient(api_client)
+    response = user_client.get_all_product_with_invalid_method()
+    assert response.status == 200
+    assert response.status_text == "OK"
+    response_data = response.json()
+    assert response_data["responseCode"] == 405
+    assert "This request method is not supported." in response_data["message"]
+
+
+
 
 

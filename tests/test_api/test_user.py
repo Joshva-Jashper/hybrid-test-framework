@@ -1,7 +1,7 @@
 from playwright.sync_api import expect
 from pages.api.user_client import UserClient
 from test_data.api_schema import user_body,user_body_dup_email,user_body_delete
-from test_data.api_user import user_body_
+from test_data.api_user import user_broken,user_missing_feild
 from faker import Faker
 import pytest
 
@@ -64,7 +64,25 @@ def test_get_user_by_email(api_client):
     assert user_data["user"]["email"] == "traceywillis@example.com"
 
 
-    
+@pytest.mark.api
+def test_create_user_with_wrong_data(api_client):
+    user_client = UserClient(api_client)
+    response = user_client.create_user(user_broken)
+    assert response.status == 415
+    assert response.status_text == "Unsupported Media Type"
+
+
+
+@pytest.mark.api
+def test_create_user_with_missing_field(api_client):
+    user_client = UserClient(api_client)
+    response = user_client.create_user(user_missing_feild)
+    assert response.status == 200
+    assert response.status_text == "OK"
+    response_data = response.json()
+    assert response_data["responseCode"] == 400
+    assert "Bad request" in response_data["message"]
+        
 
 
 

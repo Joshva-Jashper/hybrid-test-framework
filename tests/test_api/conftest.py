@@ -15,7 +15,9 @@ class BaseApiClient:
     def get(self,endpoint:str,params:dict=None,**kwargs):
         return self.request.get(endpoint,params=params,**kwargs)
 
-    def post(self,endpoint:str,data:dict=None,**kwargs):
+    def post(self,endpoint:str,data=None,**kwargs):
+        if isinstance(data, (str, bytes)):
+            return self.request.post(endpoint, data=data, **kwargs)
         return self.request.post(endpoint,form=data,**kwargs)
 
     def put(self,endpoint:str,data:dict=None,**kwargs):
