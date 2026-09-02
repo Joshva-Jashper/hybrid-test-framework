@@ -63,8 +63,6 @@ def browser_context(request,playwright:Playwright,get_storage_state):
     browser_name = get_option(request.config,"browser")
     video_option = get_option(request.config,"video")
     headed_flag = get_option(request.config,"headed")
-
-
     print("[*] Playwright is started....")
     print(f"[*] Playwright browser is started....{browser_name}")
     print(f"[*] starting with video mode ...{video_option}")
