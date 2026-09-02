@@ -1,9 +1,5 @@
 [
-  {
-    "email": "jane.doe.qa01@xample.com",
-    "password": "SecurePass@123",
-    "success_or_failure" : "success"
-  },
+  
   {
     "email": "john.smith.q02@example.com",
     "password": "AnotherPass@456",

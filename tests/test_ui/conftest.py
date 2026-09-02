@@ -39,7 +39,7 @@ def get_storage_state(request,playwright:Playwright):
     base_page = BasePage(page)
     login_page = LoginSignupPage(page)
     base_page.click_signup_login()
-    login_page.login("jane.doe.qa01@xample.com", "SecurePass@123")
+    login_page.login("john.smith.q02@example.com", "AnotherPass@456")
     expect(login_page.success_full_login()).to_be_visible()
 
     token_path = "auth/token.json"
@@ -68,9 +68,9 @@ def browser_context(request,playwright:Playwright,get_storage_state):
     print("[*] Playwright is started....")
     print(f"[*] Playwright browser is started....{browser_name}")
     print(f"[*] starting with video mode ...{video_option}")
-    #print(f"[*] headed flagg is set to {headed_flag}")
+    print(f"[*] headed flagg is set to {headed_flag}")
     if browser_name == "chromium":
-        browser = playwright.chromium.launch()
+        browser = playwright.chromium.launch(headless = not headed_flag)
     elif browser_name == "firefox":
         browser = playwright.firefox.launch()
     elif browser_name == "webkit":
